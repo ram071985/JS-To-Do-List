@@ -1,17 +1,20 @@
 /* To Do List app | by Reid Muchow */
 
 
-.con-logo {
+body {
     display: flex;
-    justify-content: center;
     margin-top: 75px;
-}
-
-#to-do-logo {
-    text-transform: uppercase;
-    font-size: 50px;
-}
-
-.js-form {
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
     
+}
+
+h1 {
+  font-size: 50px;
+}
+
+input[type=text] {
+    width: 200px;
+    height: 20px;
 }
