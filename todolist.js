@@ -4,9 +4,8 @@ let toDolist = [];
 
 
 
-document.getElementsByClassName('js-todo-input').addEventListener('keydown', function(e) {
-    let key = e.which || e.key;
-    if (key === 13) {
-
+document.getElementById('js-todo-input').addEventListener('keydown', function(evt) {
+    if (evt.code === Enter); {
+    document.getElementById('todo-item')
     }
 });
