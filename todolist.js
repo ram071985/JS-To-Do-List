@@ -1,13 +1,18 @@
 /* Reid Muchow'a To Do List App */
-
 let toDolist = [];
 
 
 
 document.getElementById('js-todo-input').addEventListener('keydown', function(evt) {
     evt.preventDefault();
-    if (evt.code = 13 ); {
-        console.log('enter button was pressed!');
-        document.getElementById('todo-item')
+    if (evt.keyCode === 'Enter' ); {
+        console.log('Enter KEy');
+        document.getElementById('todo-item').innerHTML = text;
+        
     }
 });
+
+function makeUL(array) {
+    let list = document.createElement('ul');
+}
+let text = document.getElementById('js-todo-input').innerHTML;
