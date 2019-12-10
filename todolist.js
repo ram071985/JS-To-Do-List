@@ -5,7 +5,7 @@ let toDolist = [];
 
 document.getElementById('js-todo-input').addEventListener('keydown', function(evt) {
     evt.preventDefault();
-    if (evt.keyCode === 'Enter' ); {
+    if (evt.code === 'Enter' ); {
         console.log('Enter KEy');
         document.getElementById('todo-item').innerHTML = text;
         
