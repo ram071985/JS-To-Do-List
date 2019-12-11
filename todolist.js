@@ -4,8 +4,9 @@ let toDolist = [];
 
 
 document.getElementById('js-todo-input').addEventListener('keydown', function(evt) {
-    evt.preventDefault();
     if (evt.code === 'Enter' ) {
+        evt.preventDefault();
+        console.log('Enter');
         document.getElementById('js-todo-input').innerHTML;
         
     }
