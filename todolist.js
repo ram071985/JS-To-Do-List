@@ -24,6 +24,8 @@ document.getElementById('js-todo-input').addEventListener('keydown', function(ev
         let posDelete = document.getElementsByTagName('ul')[0];
         posDelete.appendChild(deleteButton);
 
+
+
         
         /* form submission value */
         evt.target.value = '';
@@ -43,12 +45,14 @@ document.getElementById('js-todo-input').addEventListener('keydown', function(ev
           containerButton.removeChild(removeButton);
 
         })
-
+     
         /* Click Strikethrough */
-        document.getElementsByTagName('li').addEventListener('click', function(s) {
+        newEl.addEventListener('click', function(s) {
           let strike = s.target.style.textDecoration = 'line-through';
-          if (strike === 'false') {
-            s.target.value = strike;
+          if (newEl.value.length > 0 ) {
+            return strike;
+
+           
           }
 
           
@@ -63,7 +67,6 @@ document.getElementById('js-todo-input').addEventListener('keydown', function(ev
   })
   
 
-    
         
     
 
