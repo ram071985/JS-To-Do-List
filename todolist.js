@@ -22,17 +22,36 @@ document.getElementById('js-todo-input').addEventListener('keydown', function(ev
         let buttonText = document.createTextNode(deleteText);
         deleteButton.appendChild(buttonText);
         let posDelete = document.getElementsByTagName('ul')[0];
-        posDelete.appendChild(newEl);
+        posDelete.appendChild(deleteButton);
 
+        
         /* form submission value */
         evt.target.value = '';
 
         /* Delete Button Click Functionality */
-        deleteButton.addEventListener('click', function(del) {
+        deleteButton.addEventListener('click', function() {
           let removeEl = document.getElementsByTagName('li')[0];
           let containerEl = removeEl.parentNode;
           containerEl.removeChild(removeEl);
 
+        })
+
+        /* Delete Button Delete Funtionality*/ 
+        deleteButton.addEventListener('click', function() {
+          let removeButton = document.getElementsByTagName('button')[0];
+          let containerButton = removeButton.parentNode;
+          containerButton.removeChild(removeButton);
+
+        })
+
+        /* Click Strikethrough */
+        document.getElementsByTagName('li').addEventListener('click', function(s) {
+          let strike = s.target.style.textDecoration = 'line-through';
+          if (strike === 'false') {
+            s.target.value = strike;
+          }
+
+          
 
         })
         
@@ -42,7 +61,7 @@ document.getElementById('js-todo-input').addEventListener('keydown', function(ev
     
 
   })
-
+  
 
     
         
