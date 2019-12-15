@@ -22,5 +22,7 @@ input[type=text] {
 }
 
 li {
+  display: inline-block;
   color: white;
+  font-size: 35px;
 }
