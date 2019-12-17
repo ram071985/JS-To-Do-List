@@ -1,14 +1,12 @@
 /* To Do List app | by Reid Muchow */
 
-
 body {
-    display: flex;
-    margin-top: 75px;
-    height: 100%;
-    flex-direction: column;
-    align-items: center;
-    background-color: purple;
-    
+  display: flex;
+  margin-top: 75px;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  background-color: purple;
 }
 
 h1 {
@@ -16,13 +14,13 @@ h1 {
   color: white;
 }
 
-input[type=text] {
-    width: 200px;
-    height: 20px;
+input[type="text"] {
+  width: 200px;
+  height: 20px;
 }
 
 li {
-  display: inline-block;
+
   color: white;
   font-size: 35px;
 }

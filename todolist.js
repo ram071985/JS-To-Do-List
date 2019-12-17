@@ -47,8 +47,8 @@ document
           return strike;
         }
       });
-
-      window.localStorage.setItem('list', JSON.stringify(position));
+      
+      window.localStorage.setItem('list', JSON.stringify(newText));
       JSON.parse(window.localStorage.getItem('list'));
       
     }
