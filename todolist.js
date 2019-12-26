@@ -41,16 +41,16 @@ document
       let deleteButton = createDeleteButton();
 
       /* Delete Button Click Functionality */
-      deleteButton.addEventListener("click", function() {
+      deleteButton.addEventListener("click", function(e) {
         let removeEl = e.target;
         let liEl = removeEl.parentNode;
         ulElement.removeChild(liEl);
       });
-      ulElement.appendChild(deleteButton);
+      liElement.appendChild(deleteButton);
 
       /* form submission value */
       evt.target.value = "";
-      
+
       // store new todo item in local storage
       // check to see if there is any new exiting array in local storage
       // if not, create a new array and add an item to it
