@@ -50,11 +50,12 @@ document
 
       /* form submission value */
       evt.target.value = "";
-// store new todo item in local storage
-// check to see if there is any new exiting array in local storage
-// if not, create a new array and add an item to it
-// if so, add new item to array
-// update local storage with new array 
+      
+      // store new todo item in local storage
+      // check to see if there is any new exiting array in local storage
+      // if not, create a new array and add an item to it
+      // if so, add new item to array
+      // update local storage with new array
       window.localStorage.setItem("list", JSON.stringify(evt.target.value));
       let returnValue = localStorage.getItem("list");
     }
