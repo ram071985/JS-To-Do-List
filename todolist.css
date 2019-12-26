@@ -24,3 +24,7 @@ li {
   color: white;
   font-size: 35px;
 }
+
+li:hover {
+  cursor: pointer;
+}
