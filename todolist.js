@@ -4,16 +4,17 @@ function createLiElement(toDoItemText) {
   const liElement = document.createElement("li");
   const liTextNode = document.createTextNode(toDoItemText);
   liElement.appendChild(liTextNode);
+  
 
-  /* Click Strikethrough */
   liElement.addEventListener("click", function(e) {
     let strike = (e.target.style.textDecoration = "line-through");
     if (liElement.value.length > 0) {
       return strike;
     }
   });
-
+  window.localStorage.setItem("liElement", JSON.stringify(evt.target.value));
   return liElement;
+
 }
 
 function createDeleteButton() {
@@ -33,14 +34,13 @@ document
 
       let ulElement = document.getElementById("todo-list");
 
-      /* List Creator */
+
       let liElement = createLiElement(evt.target.value);
       ulElement.appendChild(liElement);
 
-      /* Button Creator */
+   
       let deleteButton = createDeleteButton();
 
-      /* Delete Button Click Functionality */
       deleteButton.addEventListener("click", function(e) {
         let removeEl = e.target;
         let liEl = removeEl.parentNode;
@@ -48,7 +48,7 @@ document
       });
       liElement.appendChild(deleteButton);
 
-      /* form submission value */
+   
       evt.target.value = "";
 
       // store new todo item in local storage
@@ -56,8 +56,7 @@ document
       // if not, create a new array and add an item to it
       // if so, add new item to array
       // update local storage with new array
-      window.localStorage.setItem("list", JSON.stringify(evt.target.value));
-      let returnValue = localStorage.getItem("list");
+  
     }
   });
 
