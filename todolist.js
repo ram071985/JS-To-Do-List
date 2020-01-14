@@ -1,4 +1,6 @@
 /* Reid Muchow'a To Do List App */
+let localStorageArray = [];
+JSON.parse(window.localStorage.getItem('item'));
 
 function createLiElement(toDoItemText) {
   const liElement = document.createElement("li");
@@ -12,8 +14,12 @@ function createLiElement(toDoItemText) {
       return strike;
     }
   });
+  let textContent = liTextNode.textContent;
+  localStorageArray = [textContent];
+  console.log(localStorageArray);
+  window.localStorage.setItem('item', JSON.stringify(localStorageArray));
   return liElement;
-
+  
 }
 
 function createDeleteButton() {
@@ -26,19 +32,14 @@ function createDeleteButton() {
 }
 
 
-document
-  .getElementById("js-todo-input")
-  .addEventListener("keydown", function(evt) {
+document.getElementById("js-todo-input").addEventListener("keydown", function(evt) {
     if (evt.code === "Enter") {
       evt.preventDefault();
 
       let ulElement = document.getElementById("todo-list");
-
-
       let liElement = createLiElement(evt.target.value);
       ulElement.appendChild(liElement);
 
-   
       let deleteButton = createDeleteButton();
 
       deleteButton.addEventListener("click", function(e) {
@@ -47,8 +48,6 @@ document
         ulElement.removeChild(liEl);
       });
       liElement.appendChild(deleteButton);
-
-   
       evt.target.value = "";
 
       // store new todo item in local storage
@@ -60,7 +59,7 @@ document
     }
   });
 
-let localStorageArray = [];
+
 
 //retrieve the to do list from local storage
 //should have array in local storage
