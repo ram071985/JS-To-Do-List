@@ -12,7 +12,6 @@ function createLiElement(toDoItemText) {
       return strike;
     }
   });
-  window.localStorage.setItem("liElement", JSON.stringify(evt.target.value));
   return liElement;
 
 }
@@ -25,6 +24,7 @@ function createDeleteButton() {
 
   return deleteButton;
 }
+
 
 document
   .getElementById("js-todo-input")
@@ -59,6 +59,8 @@ document
   
     }
   });
+
+let localStorageArray = [];
 
 //retrieve the to do list from local storage
 //should have array in local storage
