@@ -1,10 +1,7 @@
-/* Reid Muchow'a To Do List App */
-
 function createLiElement(toDoItemText) {
   const liElement = document.createElement("li");
   const liTextNode = document.createTextNode(toDoItemText);
   liElement.appendChild(liTextNode);
-  
 
   liElement.addEventListener("click", function(e) {
     let strike = (e.target.style.textDecoration = "line-through");
@@ -12,9 +9,8 @@ function createLiElement(toDoItemText) {
       return strike;
     }
   });
-  
+
   return liElement;
-  
 }
 
 function createDeleteButton() {
@@ -26,16 +22,19 @@ function createDeleteButton() {
   return deleteButton;
 }
 
-
-
-document.getElementById("js-todo-input").addEventListener("keydown", function(evt) {
+document
+  .getElementById("js-todo-input")
+  .addEventListener("keydown", function(evt) {
     if (evt.code === "Enter") {
       evt.preventDefault();
 
       let ulElement = document.getElementById("todo-list");
       let liElement = createLiElement(evt.target.value);
+
       localStorageArray.push(liElement.textContent);
-      console.log(localStorageArray);
+
+      window.localStorage.setItem("liText", localStorageArray);
+
       ulElement.appendChild(liElement);
 
       let deleteButton = createDeleteButton();
@@ -46,9 +45,8 @@ document.getElementById("js-todo-input").addEventListener("keydown", function(ev
         ulElement.removeChild(liEl);
       });
       liElement.appendChild(deleteButton);
-      
-     
-     // window.localStorage.setItem('liItems', JSON.stringify(localStorageArray));
+
+      // window.localStorage.setItem('liItems', JSON.stringify(localStorageArray));
       evt.target.value = "";
 
       // store new todo item in local storage
@@ -56,12 +54,23 @@ document.getElementById("js-todo-input").addEventListener("keydown", function(ev
       // if not, create a new array and add an item to it
       // if so, add new item to array
       // update local storage with new array
-  
     }
   });
-  let localStorageArray = [];
-  
-  
+
+let localStorageArray = [];
+
+function localStorageDisplay() {
+  let getLocalStorage = window.localStorage.getItem("liText");
+  let localStorageLength = localStorageArray.length;
+  console.log(localStorageArray.length);
+  for (i = 0; i < localStorageLength; i++) {
+    let ulElement = document.getElementById("todo-list");
+    let liElement = createLiElement(getLocalStorage);
+    ulElement.appendChild(liElement);
+    createDeleteButton();
+  }
+}
+localStorageDisplay();
 
 
 //retrieve the to do list from local storage
