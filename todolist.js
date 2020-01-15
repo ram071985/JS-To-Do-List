@@ -1,6 +1,4 @@
 /* Reid Muchow'a To Do List App */
-let localStorageArray = [];
-JSON.parse(window.localStorage.getItem('item'));
 
 function createLiElement(toDoItemText) {
   const liElement = document.createElement("li");
@@ -14,10 +12,10 @@ function createLiElement(toDoItemText) {
       return strike;
     }
   });
-  let textContent = liTextNode.textContent;
-  localStorageArray = [textContent];
-  console.log(localStorageArray);
-  window.localStorage.setItem('item', JSON.stringify(localStorageArray));
+  let localStorageArray = [];
+  localStorageArray.push(liElement);
+ // console.log(localStorageArray);
+ // window.localStorage.setItem('item', JSON.stringify(localStorageArray));
   return liElement;
   
 }
@@ -30,6 +28,7 @@ function createDeleteButton() {
 
   return deleteButton;
 }
+
 
 
 document.getElementById("js-todo-input").addEventListener("keydown", function(evt) {
