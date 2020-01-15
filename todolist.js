@@ -12,10 +12,7 @@ function createLiElement(toDoItemText) {
       return strike;
     }
   });
-  let localStorageArray = [];
-  localStorageArray.push(liElement);
- // console.log(localStorageArray);
- // window.localStorage.setItem('item', JSON.stringify(localStorageArray));
+  
   return liElement;
   
 }
@@ -37,6 +34,8 @@ document.getElementById("js-todo-input").addEventListener("keydown", function(ev
 
       let ulElement = document.getElementById("todo-list");
       let liElement = createLiElement(evt.target.value);
+      localStorageArray.push(liElement.textContent);
+      console.log(localStorageArray);
       ulElement.appendChild(liElement);
 
       let deleteButton = createDeleteButton();
@@ -47,6 +46,9 @@ document.getElementById("js-todo-input").addEventListener("keydown", function(ev
         ulElement.removeChild(liEl);
       });
       liElement.appendChild(deleteButton);
+      
+     
+     // window.localStorage.setItem('liItems', JSON.stringify(localStorageArray));
       evt.target.value = "";
 
       // store new todo item in local storage
@@ -57,7 +59,9 @@ document.getElementById("js-todo-input").addEventListener("keydown", function(ev
   
     }
   });
-
+  let localStorageArray = [];
+  
+  
 
 
 //retrieve the to do list from local storage
