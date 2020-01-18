@@ -61,8 +61,7 @@ let localStorageArray = [];
 
 function localStorageDisplay() {
   let getLocalStorage = JSON.parse(window.localStorage.getItem("liText"));
-  console.log(getLocalStorage);
-  let localStorageLength = localStorageArray.length;
+  let localStorageLength = getLocalStorage.length;
   for (i = 0; i < localStorageLength; i++) {
     let ulElement = document.getElementById("todo-list");
     let liElement = createLiElement(getLocalStorage);
@@ -76,3 +75,6 @@ localStorageDisplay();
 //retrieve the to do list from local storage
 //should have array in local storage
 //loop through each item in array, and display items on page
+
+
+
