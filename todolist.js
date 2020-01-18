@@ -33,8 +33,8 @@ document
 
       localStorageArray.push(liElement.textContent);
 
-      window.localStorage.setItem("liText", localStorageArray);
-
+      window.localStorage.setItem("liText", JSON.stringify(localStorageArray));
+      console.log(localStorageArray);
       ulElement.appendChild(liElement);
 
       let deleteButton = createDeleteButton();
@@ -60,9 +60,9 @@ document
 let localStorageArray = [];
 
 function localStorageDisplay() {
-  let getLocalStorage = window.localStorage.getItem("liText");
+  let getLocalStorage = JSON.parse(window.localStorage.getItem("liText"));
+  console.log(getLocalStorage);
   let localStorageLength = localStorageArray.length;
-  console.log(localStorageArray.length);
   for (i = 0; i < localStorageLength; i++) {
     let ulElement = document.getElementById("todo-list");
     let liElement = createLiElement(getLocalStorage);
