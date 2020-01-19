@@ -30,11 +30,11 @@ document
 
       let ulElement = document.getElementById("todo-list");
       let liElement = createLiElement(evt.target.value);
-
+      console.log(liElement);
       localStorageArray.push(liElement.textContent);
 
       window.localStorage.setItem("liText", JSON.stringify(localStorageArray));
-      console.log(localStorageArray);
+      
       ulElement.appendChild(liElement);
 
       let deleteButton = createDeleteButton();
@@ -66,7 +66,15 @@ function localStorageDisplay() {
     let ulElement = document.getElementById("todo-list");
     let liElement = createLiElement(getLocalStorage);
     ulElement.appendChild(liElement);
-    createDeleteButton();
+    let deleteButton = createDeleteButton();
+
+    deleteButton.addEventListener("click", function(e) {
+      let removeEl = e.target;
+      let liEl = removeEl.parentNode;
+      ulElement.removeChild(liEl);
+      window.localStorage.removeItem("liText");
+    });
+    liElement.appendChild(deleteButton);
   }
 }
 localStorageDisplay();
