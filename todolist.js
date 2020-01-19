@@ -27,14 +27,12 @@ document
   .addEventListener("keydown", function(evt) {
     if (evt.code === "Enter") {
       evt.preventDefault();
-
+      let toDoItem = evt.target.value;
+      localStorageArray.push(toDoItem);
+      window.localStorage.setItem("liText", JSON.stringify(localStorageArray));
+      console.log(localStorageArray);
       let ulElement = document.getElementById("todo-list");
       let liElement = createLiElement(evt.target.value);
-      console.log(liElement);
-      localStorageArray.push(liElement.textContent);
-
-      window.localStorage.setItem("liText", JSON.stringify(localStorageArray));
-      
       ulElement.appendChild(liElement);
 
       let deleteButton = createDeleteButton();
@@ -57,7 +55,7 @@ document
     }
   });
 
-let localStorageArray = [];
+  let localStorageArray = [];
 
 function localStorageDisplay() {
   let getLocalStorage = JSON.parse(window.localStorage.getItem("liText"));
