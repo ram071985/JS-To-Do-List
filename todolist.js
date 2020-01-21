@@ -58,19 +58,14 @@ document
 
 function localStorageDisplay() {
   let getLocalStorage = JSON.parse(window.localStorage.getItem("liText"));
-  
   for (i = 0; i < getLocalStorage.length; i++) {
     let ulElement = document.getElementById("todo-list");
     let liElement = createLiElement(getLocalStorage[i]);
     ulElement.appendChild(liElement);
-    let liTextContent = liElement.textContent;
     let deleteButton = createDeleteButton();
 
     deleteButton.addEventListener("click", function(e) {
       for (i = 0; i < getLocalStorage.length; i++) {
-<<<<<<< HEAD
-      if ([i] === liTextContent) {
-=======
         
         //if(indexList)
         console.log(getLocalStorage[i]);
@@ -79,10 +74,8 @@ function localStorageDisplay() {
       let removeEl = e.target;
       let liEl = removeEl.parentNode;
   
->>>>>>> 4aa8290bc35f5b19e19f678c293697a886d8b695
       ulElement.removeChild(liEl);
       }
-    }
     });
     liElement.appendChild(deleteButton);
   
@@ -94,6 +87,7 @@ localStorageDisplay();
 //retrieve the to do list from local storage
 //should have array in local storage
 //loop through each item in array, and display items on page
+
 
 
 
