@@ -18,8 +18,7 @@ function createDeleteButton() {
   const deleteText = "Delete";
   const buttonText = document.createTextNode(deleteText);
   deleteButton.appendChild(buttonText);
-
-  return deleteButton;  
+  return deleteButton;
 }
 
 document
@@ -54,7 +53,7 @@ document
     }
   });
 
-  let localStorageArray = [];
+let localStorageArray = [];
 
 function localStorageDisplay() {
   let getLocalStorage = JSON.parse(window.localStorage.getItem("liText"));
@@ -65,29 +64,24 @@ function localStorageDisplay() {
     let deleteButton = createDeleteButton();
 
     deleteButton.addEventListener("click", function(e) {
-      for (i = 0; i < getLocalStorage.length; i++) {
-        
-        //if(indexList)
-        console.log(getLocalStorage[i]);
-     let localStorageString = getLocalStorage.toString();
-      console.log(localStorageString );
       let removeEl = e.target;
       let liEl = removeEl.parentNode;
-  
       ulElement.removeChild(liEl);
+      for (i = 0; i < getLocalStorage.length; i++) {
+    let buttonText = deleteButton.innerText;
+    let liText = liElement.textContent;
+    //    if (getLocalStorage[i] === liText + buttonText) {
+       //   console.log(getLocalStorage[i] === liText);
+      //   getLocalStorage.splice(getLocalStorage[i], 1);
+        
+       // }
       }
     });
     liElement.appendChild(deleteButton);
-  
   }
 }
 localStorageDisplay();
 
-
 //retrieve the to do list from local storage
 //should have array in local storage
 //loop through each item in array, and display items on page
-
-
-
-
