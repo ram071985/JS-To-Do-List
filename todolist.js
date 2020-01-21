@@ -19,7 +19,7 @@ function createDeleteButton() {
   const buttonText = document.createTextNode(deleteText);
   deleteButton.appendChild(buttonText);
 
-  return deleteButton;
+  return deleteButton;  
 }
 
 document
@@ -59,7 +59,6 @@ document
 function localStorageDisplay() {
   let getLocalStorage = JSON.parse(window.localStorage.getItem("liText"));
   for (i = 0; i < getLocalStorage.length; i++) {
-    debugger;
     let ulElement = document.getElementById("todo-list");
     let liElement = createLiElement(getLocalStorage[i]);
     ulElement.appendChild(liElement);
@@ -67,10 +66,15 @@ function localStorageDisplay() {
 
     deleteButton.addEventListener("click", function(e) {
       for (i = 0; i < getLocalStorage.length; i++) {
+        
+        //if(indexList)
+        console.log(getLocalStorage[i]);
+     let localStorageString = getLocalStorage.toString();
+      console.log(localStorageString );
       let removeEl = e.target;
       let liEl = removeEl.parentNode;
+  
       ulElement.removeChild(liEl);
-      window.localStorage.removeItem("liText");
       }
     });
     liElement.appendChild(deleteButton);
