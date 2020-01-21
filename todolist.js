@@ -60,22 +60,30 @@ function localStorageDisplay() {
   for (i = 0; i < getLocalStorage.length; i++) {
     let ulElement = document.getElementById("todo-list");
     let liElement = createLiElement(getLocalStorage[i]);
+   
     ulElement.appendChild(liElement);
     let deleteButton = createDeleteButton();
-
+    
     deleteButton.addEventListener("click", function(e) {
+     // console.log(liElement.textCo)
+  
       let removeEl = e.target;
       let liEl = removeEl.parentNode;
       ulElement.removeChild(liEl);
       for (i = 0; i < getLocalStorage.length; i++) {
-    let buttonText = deleteButton.innerText;
-    let liText = liElement.textContent;
-    //    if (getLocalStorage[i] === liText + buttonText) {
+        console.log(liElement.textContent === "bank" + "Delete");
+   //   let localStorageString = JSON.stringify(getLocalStorage);
+  //    getLocalStorage[i] = localStorageString;
+  //    localStorageString;
+     
+   // let buttonText = deleteButton.innerText;
+  //  let liText = liElement.textContent;
+        //if (getLocalStorage[i] === liText + buttonText) {
        //   console.log(getLocalStorage[i] === liText);
-      //   getLocalStorage.splice(getLocalStorage[i], 1);
+        // getLocalStorage.splice(0, 1);
         
-       // }
-      }
+        }
+    //  }
     });
     liElement.appendChild(deleteButton);
   }
