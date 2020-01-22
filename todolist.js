@@ -29,7 +29,7 @@ document
       localStorageArray.push(toDoItem);
       window.localStorage.setItem("liText", JSON.stringify(localStorageArray));
       let ulElement = document.getElementById("todo-list");
-      let liElement = createLiElement(evt.target.value);
+      let liElement = createLiElement(toDoItem);
       ulElement.appendChild(liElement);
 
       let deleteButton = createDeleteButton();
