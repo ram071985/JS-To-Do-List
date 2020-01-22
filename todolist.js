@@ -2,7 +2,6 @@ function createLiElement(toDoItemText) {
   const liElement = document.createElement("li");
   const liTextNode = document.createTextNode(toDoItemText);
   liElement.appendChild(liTextNode);
-
   liElement.addEventListener("click", function(e) {
     let strike = (e.target.style.textDecoration = "line-through");
     if (liElement.value.length > 0) {
@@ -39,18 +38,18 @@ document
         let removeEl = e.target;
         let liEl = removeEl.parentNode;
         ulElement.removeChild(liEl);
+        for (i = 0; i < localStorageArray.length; i++) {
+          if (localStorageArray[i] === toDoItem) {
+          localStorageArray.splice([i], 1);
+          }
+        }
+          window.localStorage.setItem("liText", JSON.stringify(localStorageArray));
       });
       liElement.appendChild(deleteButton);
-
-      // window.localStorage.setItem('liItems', JSON.stringify(localStorageArray));
       evt.target.value = "";
 
-      // store new todo item in local storage
-      // check to see if there is any new exiting array in local storage
-      // if not, create a new array and add an item to it
-      // if so, add new item to array
-      // update local storage with new array
     }
+    
   });
 
 let localStorageArray = [];
@@ -59,37 +58,26 @@ function localStorageDisplay() {
   let getLocalStorage = JSON.parse(window.localStorage.getItem("liText"));
   for (i = 0; i < getLocalStorage.length; i++) {
     let ulElement = document.getElementById("todo-list");
-    let liElement = createLiElement(getLocalStorage[i]);
+    let liTextNode = getLocalStorage[i];
+    let liElement = createLiElement(liTextNode);
    
     ulElement.appendChild(liElement);
     let deleteButton = createDeleteButton();
     
     deleteButton.addEventListener("click", function(e) {
-     // console.log(liElement.textCo)
-  
       let removeEl = e.target;
       let liEl = removeEl.parentNode;
       ulElement.removeChild(liEl);
       for (i = 0; i < getLocalStorage.length; i++) {
-        console.log(liElement.textContent === "bank" + "Delete");
-   //   let localStorageString = JSON.stringify(getLocalStorage);
-  //    getLocalStorage[i] = localStorageString;
-  //    localStorageString;
-     
-   // let buttonText = deleteButton.innerText;
-  //  let liText = liElement.textContent;
-        //if (getLocalStorage[i] === liText + buttonText) {
-       //   console.log(getLocalStorage[i] === liText);
-        // getLocalStorage.splice(0, 1);
-        
-        }
-    //  }
+      if (getLocalStorage[i] === liTextNode) {
+      getLocalStorage.splice([i], 1);
+      } 
+    }
+    window.localStorage.setItem("liText", JSON.stringify(getLocalStorage));
     });
     liElement.appendChild(deleteButton);
   }
 }
 localStorageDisplay();
 
-//retrieve the to do list from local storage
-//should have array in local storage
-//loop through each item in array, and display items on page
+
