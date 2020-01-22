@@ -60,10 +60,10 @@ function localStorageDisplay() {
   for (i = 0; i < getLocalStorage.length; i++) {
     let ulElement = document.getElementById("todo-list");
     let liTextNode = getLocalStorage[i];
-    let blankTextNode = "";
-    let liElementBlankText = createLiElement(blankTextNode);
     let liElement = createLiElement(liTextNode);
     if (getLocalStorage === []) {
+      let blankTextNode = "";
+      let liElementBlankText = createLiElement(blankTextNode);
       ulElement.appendChild(liElementBlankText);
     } else {
       ulElement.appendChild(liElement);
