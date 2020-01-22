@@ -40,16 +40,17 @@ document
         ulElement.removeChild(liEl);
         for (i = 0; i < localStorageArray.length; i++) {
           if (localStorageArray[i] === toDoItem) {
-          localStorageArray.splice([i], 1);
+            localStorageArray.splice([i], 1);
           }
         }
-          window.localStorage.setItem("liText", JSON.stringify(localStorageArray));
+        window.localStorage.setItem(
+          "liText",
+          JSON.stringify(localStorageArray)
+        );
       });
       liElement.appendChild(deleteButton);
       evt.target.value = "";
-
     }
-    
   });
 
 let localStorageArray = [];
@@ -59,25 +60,28 @@ function localStorageDisplay() {
   for (i = 0; i < getLocalStorage.length; i++) {
     let ulElement = document.getElementById("todo-list");
     let liTextNode = getLocalStorage[i];
+    let blankTextNode = "";
+    let liElementBlankText = createLiElement(blankTextNode);
     let liElement = createLiElement(liTextNode);
-   
-    ulElement.appendChild(liElement);
+    if (getLocalStorage === []) {
+      ulElement.appendChild(liElementBlankText);
+    } else {
+      ulElement.appendChild(liElement);
+    }
+
     let deleteButton = createDeleteButton();
-    
     deleteButton.addEventListener("click", function(e) {
       let removeEl = e.target;
       let liEl = removeEl.parentNode;
       ulElement.removeChild(liEl);
       for (i = 0; i < getLocalStorage.length; i++) {
-      if (getLocalStorage[i] === liTextNode) {
-      getLocalStorage.splice([i], 1);
-      } 
-    }
-    window.localStorage.setItem("liText", JSON.stringify(getLocalStorage));
+        if (getLocalStorage[i] === liTextNode) {
+          getLocalStorage.splice([i], 1);
+        }
+      }
+      window.localStorage.setItem("liText", JSON.stringify(getLocalStorage));
     });
     liElement.appendChild(deleteButton);
   }
 }
 localStorageDisplay();
-
-
