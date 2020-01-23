@@ -29,7 +29,7 @@ document
       localStorageArray.push(toDoItem);
       window.localStorage.setItem("liText", JSON.stringify(localStorageArray));
       let ulElement = document.getElementById("todo-list");
-      let liElement = createLiElement(toDoItem);
+      let liElement = createLiElement(evt.target.value);
       ulElement.appendChild(liElement);
 
       let deleteButton = createDeleteButton();
@@ -40,17 +40,16 @@ document
         ulElement.removeChild(liEl);
         for (i = 0; i < localStorageArray.length; i++) {
           if (localStorageArray[i] === toDoItem) {
-            localStorageArray.splice([i], 1);
+          localStorageArray.splice([i], 1);
           }
         }
-        window.localStorage.setItem(
-          "liText",
-          JSON.stringify(localStorageArray)
-        );
+          window.localStorage.setItem("liText", JSON.stringify(localStorageArray));
       });
       liElement.appendChild(deleteButton);
       evt.target.value = "";
+
     }
+    
   });
 
 let localStorageArray = [];
@@ -59,27 +58,22 @@ function localStorageDisplay() {
   let getLocalStorage = JSON.parse(window.localStorage.getItem("liText"));
   for (i = 0; i < getLocalStorage.length; i++) {
     let ulElement = document.getElementById("todo-list");
-    if (getLocalStorage === []) {
-      let blankTextNode = "";
-      let liElementBlankText = createLiElement(blankTextNode);
-      ulElement.appendChild(liElementBlankText);
-    } else {
-      let liTextNode = getLocalStorage[i];
-      let liElement = createLiElement(liTextNode);
-      ulElement.appendChild(liElement);
-    }
-
+    let liTextNode = getLocalStorage[i];
+    let liElement = createLiElement(liTextNode);
+   
+    ulElement.appendChild(liElement);
     let deleteButton = createDeleteButton();
+    
     deleteButton.addEventListener("click", function(e) {
       let removeEl = e.target;
       let liEl = removeEl.parentNode;
       ulElement.removeChild(liEl);
       for (i = 0; i < getLocalStorage.length; i++) {
-        if (getLocalStorage[i] === liTextNode) {
-          getLocalStorage.splice([i], 1);
-        }
-      }
-      window.localStorage.setItem("liText", JSON.stringify(getLocalStorage));
+      if (getLocalStorage[i] === liTextNode) {
+      getLocalStorage.splice([i], 1);
+      } 
+    }
+    window.localStorage.setItem("liText", JSON.stringify(getLocalStorage));
     });
     liElement.appendChild(deleteButton);
   }
